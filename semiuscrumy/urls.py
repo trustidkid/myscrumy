@@ -1,5 +1,5 @@
 from django.urls import path
-from semiu import views
+from semiuscrumy import views
 urlpatterns = [
     path('', views.index)
 ]
