@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'myscrumy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'semiuscrum', #BASE_DIR / 'db.sqlite3',
+        'NAME':'semiuscrumy', #BASE_DIR / 'db.sqlite3',
         'USER': 'root',
         'PASSWORD': 'beurself07'
     }
