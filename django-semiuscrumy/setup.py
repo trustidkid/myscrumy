@@ -24,14 +24,14 @@ setup(
     classifiers=[
         "Environment :: Web Environemnt",
         "Framework :: Django",
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3.6.8",
+        "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
         "Intendence Audience :: Developer",
         "Operating System :: OS Independent",
         "Topic :: Internet :: WWW/HTTP",
         "Topic :: Internet :: WWW/HTTP :: Dynamic Content"
 
-    ],
-    python_requires='>=3.6',
+    ]
 )
