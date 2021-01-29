@@ -2,7 +2,7 @@ import os
 from setuptools import find_packages, setup
 
 with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
-    README = readme.read();
+    README = readme.read()
 
 
 #allow setup.py to be run from any path
@@ -13,7 +13,7 @@ setup(
     version="0.0.1",
     author="Semiu Biliaminur",
     author_email="yemi.bili07@gmail.com",
-    description="A simple application ",
+    description="A simple application",
     license = 'BSD License',
     long_description=README,
     long_description_content_type="text/markdown",
