@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'semiuscrumy', #BASE_DIR / 'db.sqlite3'
         'USER': 'root',
-        'PASSWORD': ''#'beurself07'
+        'PASSWORD': 'beurself07'
     }
 }
 
