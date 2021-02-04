@@ -14,7 +14,8 @@ class GoalStatus(models.Model):
         return self.scrumy_name
 
 class ScrumyGoals(models.Model):
-    goal_id = models.IntegerField(default=1)
+    #goal_name, goal_id, created_by, moved_by, owner
+    goal_id = models.BigIntegerField()
     goal_name = models.CharField(max_length=200)
     created_by = models.CharField(max_length=200)
     moved_by = models.CharField(max_length=200)
@@ -27,6 +28,7 @@ class ScrumyGoals(models.Model):
 
 
 class ScrumyHistory(models.Model):
+    #moved_by, created_by, moved_from, moved_to, time_of_action
     created_by = models.CharField(max_length=200)
     moved_by = models.CharField(max_length=200)
     moved_from = models.CharField(max_length=200)
