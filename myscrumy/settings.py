@@ -25,12 +25,13 @@ SECRET_KEY = '_l0s6(xbv0qzp!*r9cinni9-rcwnb53&o7ihv-03_j#dn&+m4k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['34.221.162.133']
+ALLOWED_HOSTS = ['54.236.232.158']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'semiuscrumy.apps.SemiuConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
