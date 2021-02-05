@@ -5,7 +5,7 @@ from .models import ScrumyGoals, GoalStatus
 # Create your views here.
 
 def get_grading_parameters(request):
-    goal = ScrumyGoals.objects.get(goal_name="Learn Django")
+    goal = ScrumyGoals.objects.filter(goal_name = "Learn Django")
     return HttpResponse(goal)
 
 
