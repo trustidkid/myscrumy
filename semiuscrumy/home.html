@@ -1,0 +1,20 @@
+{% if dic_values %}
+<table>
+    <th>User</th>
+    <th>Weekly Goals</th>
+    <th>Daily Goals</th>
+    <th>Verify Goals</th>
+    <th>Done Goals</th>
+    {% for goals in dic_values %}
+    <tr>
+        <td>{{ goals.user }}</td>
+        <td>{{ goals.goal_name }} {{ goals.goal_id }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No records found in the dictionary</p>
+{% endif %}
