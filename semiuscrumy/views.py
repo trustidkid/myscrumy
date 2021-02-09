@@ -10,9 +10,9 @@ def get_grading_parameters(request):
     #goal = ScrumyGoals.objects.filter(goal_name = "Learn Django")
     #return HttpResponse("Learn Django")
     dic_values = {
-        "goal_name": ScrumyGoals.objects.get(goal_name = "Learn Django"),
-        "goal_id": ScrumyGoals.objects.get(goal_id=1),
-        "user": User.objects.get(username="Louis")
+        "goal_name": "Learn Django", #ScrumyGoals.objects.get(goal_name = "Learn Django"),
+        "goal_id": 1, #ScrumyGoals.objects.get(goal_id=1),
+        "user": "Louis" #User.objects.get(username="Louis")
     }
     return render(request, 'semiuscrumy/home.html', dic_values)
 
