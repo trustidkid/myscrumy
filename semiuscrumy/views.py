@@ -14,7 +14,7 @@ def get_grading_parameters(request):
         "goal_id": 1, #ScrumyGoals.objects.get(goal_id=1),
         "user": "Louis" #User.objects.get(username="Louis")
     }
-    return render(request, 'semiuscrumy/home.html', dic_values)
+    return render(request, 'semiuscrumy/home.html', {"goal_name" : "Learn Django" })
 
 def move_goal(request, goal_id):
     goal = ScrumyGoals.objects.get(goal_id=1)
