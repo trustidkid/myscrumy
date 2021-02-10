@@ -35,13 +35,13 @@ def add_goal(request):
     user = User.objects.get(username='louis')
     # generate random goal_id
     goalid = random.randint(1000, 9999)
-    if ScrumyGoals.objects.get(goal_id=goalid):
-        goalid = random.randint(1000, 9999)
-    else:
-        savegoal = ScrumyGoals(goal_id=goalid, goal_name='Keep Learning Django', created_by='Louis',
-                               moved_by='Louis', owner='Louis', goal_status=goalstatus, user=user)
+    # if ScrumyGoals.objects.get(goal_id=goalid):
+    #goalid = random.randint(1000, 9999)
+   # else:
+    savegoal = ScrumyGoals(goal_id=goalid, goal_name='Keep Learning Django', created_by='Louis',
+                           moved_by='Louis', owner='Louis', goal_status=goalstatus, user=user)
 
-        savegoal.save()
+    savegoal.save()
 
 
 def home(request):
