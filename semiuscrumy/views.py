@@ -8,15 +8,8 @@ import random
 
 
 def get_grading_parameters(request):
-    #goal = ScrumyGoals.objects.filter(goal_name = "Learn Django")
-    # return HttpResponse("Learn Django")
-    dictionary = {
-        # ScrumyGoals.objects.get(goal_name = "Learn Django"),
-        'goal_name': 'Learn Django',
-        'goal_id': ScrumyGoals.objects.get(goal_id=1),
-        'user': User.objects.get(username="Louis")
-    }
-    return render(request, 'semiuscrumy/home.html', dictionary)
+    goal = ScrumyGoals.objects.filter(goal_name="Learn Django")
+    return HttpResponse(goal)
 
 
 def move_goal(request, goal_id):
@@ -35,17 +28,19 @@ def add_goal(request):
     user = User.objects.get(username='louis')
     # generate random goal_id
     goalid = random.randint(1000, 9999)
-    # if ScrumyGoals.objects.get(goal_id=goalid):
-    #goalid = random.randint(1000, 9999)
-   # else:
     savegoal = ScrumyGoals(goal_id=goalid, goal_name='Keep Learning Django', created_by='Louis',
                            moved_by='Louis', owner='Louis', goal_status=goalstatus, user=user)
-
     savegoal.save()
-
     HttpResponse(savegoal)
 
 
 def home(request):
     response = ScrumyGoals.objects.filter(goal_name="Keep Learning Django")
-    return HttpResponse(response)
+    dictionary = {
+        # ScrumyGoals.objects.get(goal_name = "Learn Django"),
+        'goal_name': 'Learn Django',
+        'goal_id': ScrumyGoals.objects.get(goal_id=1),
+        'user': User.objects.get(username="louis")
+    }
+    return render(request, 'semiuscrumy/home.html', dictionary)
+    # return HttpResponse(response)

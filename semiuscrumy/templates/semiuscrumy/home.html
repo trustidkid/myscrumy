@@ -4,40 +4,53 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <!--<div style="border:1px solid; width: 200px; float:
+            left;">
+        <div>
+            {{goal_name}}
+        </div>
+        <div>{{ user}}</div>
+    </div>-->
+    <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+    <!--{% if dictionary %}-->
+    <table>
+        <tr>
+            <td>{{goal_id}}</td>
+        </tr>
+    </table>
+    <table>
+        <th>User</th>
+        <th>Weekly Goals</th>
+        <th>Daily Goals</th>
+        <th>Verify Goals</th>
+        <th>Done Goals</th>
+        <!--{% for goals in dic_values %}-->
+        <tr>
+            <td>{{ user }}</td>
+            <td>{{ goal_name }} {{ goal_id }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!--{% endfor %}-->
+    </table>
+    <!--{% else %}
+        </p>No records found in the dictionary</p>
+        {% endif %}-->
+    <script src="" async defer></script>
+</body>
 
-        {% if dictionary %}
-        <table>
-            <th>User</th>
-            <th>Weekly Goals</th>
-            <th>Daily Goals</th>
-            <th>Verify Goals</th>
-            <th>Done Goals</th>
-            {% for goals in dic_values %}
-            <tr>
-                <td>{{ goals.user }}</td>
-                <td>{{ goals.goal_name }} {{ goals.goal_id }}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            {% endfor %}-->
-        </table>
-        {% else %}
-        </p>{{ user }} No records found in the dictionary</p>
-        {% endif %}
-        
-        <script src="" async defer></script>
-    </body>
 </html>
