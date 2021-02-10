@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import ScrumyGoals, GoalStatus
 from django.contrib.auth.models import User
+import random
 
 # Create your views here.
 
@@ -26,3 +27,23 @@ def move_goal(request, goal_id):
     return HttpResponse(goalname)
     # else:
     # return render(request, 'semiuscrumy/exception.html', {'error': 'A record with that goal id does not exist'})
+
+
+def add_goal(request):
+    # goal_name = ‘Keep Learning Django’ goal_id = a randomly generated integer between 1000 and 9999 created_by = ‘Louis’ moved_by = ‘Louis’ owner = ‘Louis’ goal_status = a Weekly goal instance of the GoalStatus model user = an instance of the User model(Louis Oma)
+    goalstatus = GoalStatus.objects.get(scrumy_name='Weekly Goal')
+    user = User.objects.get(username='louis')
+    # generate random goal_id
+    goalid = random.randint(1000, 9999)
+    if ScrumyGoals.objects.get(goal_id=goalid):
+        goalid = random.randint(1000, 9999)
+    else:
+        savegoal = ScrumyGoals(goal_id=goalid, goal_name='Keep Learning Django', created_by='Louis',
+                               moved_by='Louis', owner='Louis', goal_status=goalstatus, user=user)
+
+        savegoal.save()
+
+
+def home(request):
+    response = ScrumyGoals.objects.filter(goal_name="Keep Learning Django")
+    return HttpResponse(response)
