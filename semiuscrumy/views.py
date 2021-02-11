@@ -38,8 +38,8 @@ def home(request):
     response = ScrumyGoals.objects.filter(goal_name="Keep Learning Django")
     dictionary = {
         # ScrumyGoals.objects.get(goal_name = "Learn Django"),
-        'goal_name': 'Learn Django',
-        'goal_id': ScrumyGoals.objects.get(goal_id=1),
+        'goal_name': ScrumyGoals.objects.get(goal_name="Learn Django"),
+        'goal_id': 1,
         'user': User.objects.get(username="louis")
     }
     return render(request, 'semiuscrumy/home.html', dictionary)
