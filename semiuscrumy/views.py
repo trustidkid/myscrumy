@@ -15,10 +15,11 @@ def get_grading_parameters(request):
 def move_goal(request, goal_id):
     try:
         obj = ScrumyGoals.objects.get(goal_id=goal_id)
-        goalname = obj.goal_name
-        return HttpResponse(goalname)
     except Exception as e:  # ScrumyGoals.DoesNotExist:
         return render(request, 'semiuscrumy/exception.html', {'error': 'A record with that goal id does not exist'})
+    else:
+        goalname = obj.goal_name
+        return HttpResponse(goalname)
 
 
 def add_goal(request):
