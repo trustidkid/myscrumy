@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import ScrumyGoals, GoalStatus
 from django.contrib.auth.models import User
@@ -13,12 +13,12 @@ def get_grading_parameters(request):
 
 
 def move_goal(request, goal_id):
-    obj = ScrumyGoals.objects.filter(goal_id=goal_id)
-    if obj:
-        #goal = ScrumyGoals.objects.get(goal_id=goal_id)
+    #obj = get_object_or_404(ScrumyGoals, goal_id=goal_id)
+    try:
+        obj = ScrumyGoals.objects.get(goal_id=goal_id)
         goalname = obj.goal_name
         return HttpResponse(goalname)
-    else:
+    except ScrumyGoals.DoesNotExist:
         return render(request, 'semiuscrumy/exception.html', {'error': 'A record with that goal id does not exist'})
 
 
