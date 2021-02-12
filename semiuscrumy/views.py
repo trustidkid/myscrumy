@@ -50,10 +50,10 @@ def home(request):
 
     context = {
         'users': User.objects.all(),
-        'weeklygoal': weekly.scrumygoals_set.all(),
-        'dailygoal': daily.scrumygoals_set.all(),
-        'verifygoal': verify.scrumygoals_set.all(),
-        'done': done.scrumygoals_set.all()
+        'weeklygoal': weekly.goalstatus.all(),
+        'dailygoal': daily.goalstatus.all(),
+        'verifygoal': verify.goalstatus.all(),
+        'done': done.goalstatus.all()
     }
     return render(request, 'semiuscrumy/home.html', context)
     # return HttpResponse(response)
