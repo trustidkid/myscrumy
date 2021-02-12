@@ -21,7 +21,7 @@ def move_goal(request, goal_id):
         return render(request, 'semiuscrumy/exception.html', dictionary)
     else:
         goalname = obj.goal_name
-        return HttpResponse(goalname)
+    return HttpResponse(goalname)
 
 
 def add_goal(request):
