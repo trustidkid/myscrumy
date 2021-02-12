@@ -11,6 +11,7 @@
 <body>
 
     <table>
+        {% if context != '' %}
         <tr>
             <th>User</th>
             <th>Weekly Goals</th>
@@ -26,6 +27,7 @@
             <td>{{ verifygoal }}</td>
             <td>{{ donegoal }}</td>
         </tr>
+        {% endif %}
 
         <!--{% for goals in dic_values %}-->
         <!--{% endfor %}-->
