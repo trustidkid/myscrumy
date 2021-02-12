@@ -36,12 +36,24 @@ def add_goal(request):
 
 
 def home(request):
-    response = ScrumyGoals.objects.filter(goal_name="Keep Learning Django")
-    dictionary = {
-        # ScrumyGoals.objects.get(goal_name = "Learn Django"),
-        'goal_name': ScrumyGoals.objects.get(goal_name="Learn Django"),
-        'goal_id': 1,
-        'user': User.objects.get(username="louis")
+    #response = GoalStatus.objects.filter(goal_name="Keep Learning Django")
+    # dictionary = {
+    # ScrumyGoals.objects.get(goal_name = "Learn Django"),
+    #    'goal_name': ScrumyGoals.objects.get(goal_name="Learn Django"),
+    #   'goal_id': 1,
+    #    'user': User.objects.get(username="louis")
+    # }
+    weekly = GoalStatus.objects.get(scrumy_name='Weekly Goal')
+    daily = GoalStatus.objects.get(scrumy_name='Daily Goal')
+    verify = GoalStatus.objects.get(scrumy_name='Verify Goal')
+    done = GoalStatus.objects.get(scrumy_name='Done Goal')
+
+    context = {
+        'users': User.objects.all(),
+        'weeklygoal': weekly.scrumygoals_set.all(),
+        'dailygoal': daily.scrumygoals_set.all(),
+        'verifygoal': verify.scrumygoals_set.all(),
+        'done': done.scrumygoals_set.all()
     }
-    return render(request, 'semiuscrumy/home.html', dictionary)
+    return render(request, 'semiuscrumy/home.html', context)
     # return HttpResponse(response)
