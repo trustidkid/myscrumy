@@ -2,37 +2,41 @@
 <html lang="en">
 
 <head>
-    <title></title>
-    <meta charset="UTF-8">
+    <title>Semiu Scrumy App</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--link href="css/style.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+    <div class="container">
+        <table style="border: 1px solid">
 
+            <tr style="border: 1px solid">
+                <th style="border: 1px solid">User</th>
+                <th style="border: 1px solid">Weekly Goals</th>
+                <th style="border: 1px solid">Daily Goals</th>
+                <th style="border: 1px solid">Verify Goals</th>
+                <th style="border: 1px solid">Done Goals</th>
+            </tr>
+            {% if context != '' %}
+            <tr style="border: 1px solid">
+                <td style="border: 1px solid">{{ users }}</td>
+                <td style="border: 1px solid">{{ weeklygoal }}</td>
+                <td style="border: 1px solid">{{ dailygoal }}</td>
+                <td style="border: 1px solid">{{ verifygoal }}</td>
+                <td style="border: 1px solid">{{ donegoal }}</td>
+            </tr>
+            {% endif %}
+
+            <!--{% for goals in dic_values %}-->
+            <!--{% endfor %}-->
+        </table>
+    </div>
     <table>
-        {% if context != '' %}
-        <tr>
-            <th>User</th>
-            <th>Weekly Goals</th>
-            <th>Daily Goals</th>
-            <th>Verify Goals</th>
-            <th>Done Goals</th>
-        </tr>
-
-        <tr>
-            <td>{{ users }}</td>
-            <td>{{ weeklygoal }}</td>
-            <td>{{ dailygoal }}</td>
-            <td>{{ verifygoal }}</td>
-            <td>{{ donegoal }}</td>
-        </tr>
-        {% endif %}
-
-        <!--{% for goals in dic_values %}-->
-        <!--{% endfor %}-->
-    </table>
-
 </body>
 
 </html>
