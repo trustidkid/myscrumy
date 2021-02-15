@@ -40,12 +40,16 @@ def add_goal(request):
 
 def home(request):
     #response = GoalStatus.objects.filter(goal_name="Keep Learning Django")
-    # dictionary = {
-    # ScrumyGoals.objects.get(goal_name = "Learn Django"),
-    #    'goal_name': ScrumyGoals.objects.get(goal_name="Learn Django"),
-    #   'goal_id': 1,
-    #    'user': User.objects.get(username="louis")
-    # }
+    # lab 14 solutions
+    context = {
+        #ScrumyGoals.objects.get(goal_name="Learn Django"),
+        'goal_name': ScrumyGoals.objects.get(goal_name="Learn Django"),
+        'goal_id': 1,
+        'user': User.objects.get(username="louis")
+    }
+    return render(request, 'semiuscrumy/home.html', context)
+    # Lab 16
+    """
     weekly = GoalStatus.objects.get(scrumy_name='Weekly Goal')
     daily = GoalStatus.objects.get(scrumy_name='Daily Goal')
     verify = GoalStatus.objects.get(scrumy_name='Verify Goal')
@@ -59,4 +63,5 @@ def home(request):
         'done': done.goalstatus.all()
     }
     return render(request, 'semiuscrumy/home.html', context)
+    """
     # return HttpResponse(response)
