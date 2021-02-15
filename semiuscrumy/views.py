@@ -16,7 +16,9 @@ def get_grading_parameters(request):
 
 def move_goal(request, goal_id):
     # lab 15 statrts here
-    dictionary = {'error': 'A record with that goal id does not exist'}
+    dictionary = {
+        'error': 'A record with that goal id does not exist'
+    }
     try:
         obj = ScrumyGoals.objects.get(goal_id=goal_id)
     except Exception as e:
