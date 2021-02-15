@@ -35,7 +35,7 @@ def add_goal(request):
     savegoal = ScrumyGoals(goal_id=goalid, goal_name='Keep Learning Django', created_by='Louis',
                            moved_by='Louis', owner='Louis', goal_status=goalstatus, user=user)
     savegoal.save()
-    HttpResponse(savegoal)
+    return HttpResponse(savegoal)
 
 
 def home(request):
