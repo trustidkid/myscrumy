@@ -8,8 +8,10 @@ import random
 
 
 def get_grading_parameters(request):
-    goal = ScrumyGoals.objects.filter(goal_name="Learn Django")
-    return HttpResponse(goal)
+    lab 8 soluution
+    return HttpResponse("This is a Scrum Application")
+    #goal = ScrumyGoals.objects.filter(goal_name="Learn Django")
+    # return HttpResponse(goal)
 
 
 def move_goal(request, goal_id):
