@@ -23,8 +23,8 @@ def move_goal(request, goal_id):
         # ScrumyGoals.DoesNotExist:
         return render(request, 'semiuscrumy/exception.html', dictionary)
     else:
-        goalname = obj.goal_name
-        return HttpResponse(goalname)
+        #goalname = obj.goal_name
+        return HttpResponse(obj.goal_name)
     # lab 15 ends here
 
 
