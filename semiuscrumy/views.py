@@ -15,6 +15,7 @@ def get_grading_parameters(request):
 
 
 def move_goal(request, goal_id):
+    # lab 15 statrts here
     dictionary = {'error': 'A record with that goal id does not exist'}
     try:
         obj = ScrumyGoals.objects.get(goal_id=goal_id)
@@ -23,7 +24,8 @@ def move_goal(request, goal_id):
         return render(request, 'semiuscrumy/exception.html', dictionary)
     else:
         goalname = obj.goal_name
-    return HttpResponse(goalname)
+        return HttpResponse(goalname)
+    # lab 15 ends here
 
 
 def add_goal(request):
@@ -48,7 +50,7 @@ def home(request):
         'user': User.objects.get(username="louis")
     }
     return render(request, 'semiuscrumy/home.html', context)
-    # Lab 16
+    # Lab
     """
     weekly = GoalStatus.objects.get(scrumy_name='Weekly Goal')
     daily = GoalStatus.objects.get(scrumy_name='Daily Goal')
