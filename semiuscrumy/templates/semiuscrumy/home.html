@@ -34,11 +34,14 @@
             <!--Lab 16 Starts here-->
             {% if context != '' %}
             <tr style="border: 1px solid">
-                <td style="border: 1px solid">{{ users }}</td>
-                <td style="border: 1px solid">{{ weeklygoal }}</td>
-                <td style="border: 1px solid">{{ dailygoal }}</td>
-                <td style="border: 1px solid">{{ verifygoal }}</td>
-                <td style="border: 1px solid">{{ donegoal }}</td>
+                <td style="border: 1px solid">{{ users }} </td>
+                <td style="border: 1px solid">{{ goalid }} {{ weeklygoal }}
+                </td>
+                <td style="border: 1px solid">{{ goalid }} {{ dailygoal }}
+                </td>
+                <td style="border: 1px solid"> {{ verifygoal }}
+                </td>
+                <td style="border: 1px solid"> {{ donegoal }}</td>
             </tr>
             {% endif %}
             <!--{% for goals in dic_values %}-->

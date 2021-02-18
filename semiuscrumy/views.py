@@ -25,7 +25,7 @@ def move_goal(request, goal_id):
         # ScrumyGoals.DoesNotExist:
         return render(request, 'semiuscrumy/exception.html', dictionary)
     else:
-        #goalname = obj.goal_name
+        # goalname = obj.goal_name
         return HttpResponse(obj.goal_name)
     # lab 15 ends here
 
@@ -43,18 +43,18 @@ def add_goal(request):
 
 
 def home(request):
-    #response = GoalStatus.objects.filter(goal_name="Keep Learning Django")
+    # response = GoalStatus.objects.filter(goal_name="Keep Learning Django")
 
     # lab 14 solutions - works
     """
     context = {
-        #ScrumyGoals.objects.get(goal_name="Learn Django"),
+        # ScrumyGoals.objects.get(goal_name="Learn Django"),
         'goal_name': ScrumyGoals.objects.get(goal_name="Learn Django"),
         'goal_id': 1,
         'user': User.objects.get(username="louis")
     }
     return render(request, 'semiuscrumy/home.html', context)
-    #lab 14 ends here
+    # lab 14 ends here
     """
     # Lab 16 starts here
     # I) all existing users on the User model.
@@ -67,13 +67,25 @@ def home(request):
     daily = GoalStatus.objects.get(scrumy_name='Daily Goal')
     verify = GoalStatus.objects.get(scrumy_name='Verify Goal')
     done = GoalStatus.objects.get(scrumy_name='Done Goal')
-    context = {
-        'users': User.objects.all(),  # all existing users in the model
-        'weeklygoal': weekly.goalstatus.all(),
-        'dailygoal': daily.goalstatus.all(),
-        'verifygoal': verify.goalstatus.all(),
-        'done': done.goalstatus.all()
-    }
-    return render(request, 'semiuscrumy/home.html', context)
+    # count users
+    usercount = User.objects.all().count()
+    # build array of goal id
+    goal_id_array = []
 
+    if usercount > 0:
+        for gd in range(1, usercount):
+            count = ScrumyGoals.objects.all()
+            ids = count[gd].goal_id
+            goal_id_array.append(ids)
+
+        context = {
+            'goalid': ScrumyGoals.objects.all()[0].goal_id,
+            # all existing users in the model
+            'users': User.objects.all()[0].username,
+            'weeklygoal': weekly.goalstatus.all()[0].goal_name,
+            'dailygoal': daily.goalstatus.all()[0].goal_name,
+            'verifygoal': verify.goalstatus.all(),
+            'done': done.goalstatus.all()
+        }
+        return render(request, 'semiuscrumy/home.html', context)
     # return HttpResponse(response)
