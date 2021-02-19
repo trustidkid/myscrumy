@@ -32,7 +32,7 @@ def move_goal(request, goal_id):
 
 def add_goal(request):
     # goal_name = ‘Keep Learning Django’ goal_id = a randomly generated integer between 1000 and 9999 created_by = ‘Louis’ moved_by = ‘Louis’ owner = ‘Louis’ goal_status = a Weekly goal instance of the GoalStatus model user = an instance of the User model(Louis Oma)
-    goalstatus = GoalStatus.objects.get(scrumy_name='Weekly Goal')
+    goalstatus = GoalStatus.objects.get(status_name='Weekly Goal')
     user = User.objects.get(username='louis')
     # generate random goal_id
     goalid = random.randint(1000, 9999)
@@ -63,10 +63,10 @@ def home(request):
     # IV) All goals under Verify Goals
     # V) All goals under Done Goals
 
-    weekly = GoalStatus.objects.get(scrumy_name='Weekly Goal')
-    daily = GoalStatus.objects.get(scrumy_name='Daily Goal')
-    verify = GoalStatus.objects.get(scrumy_name='Verify Goal')
-    done = GoalStatus.objects.get(scrumy_name='Done Goal')
+    weekly = GoalStatus.objects.get(status_name='Weekly Goal')
+    daily = GoalStatus.objects.get(status_name='Daily Goal')
+    verify = GoalStatus.objects.get(status_name='Verify Goal')
+    done = GoalStatus.objects.get(status_name='Done Goal')
     # count users
     usercount = User.objects.all().count()
     # build array of goal id
