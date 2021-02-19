@@ -32,16 +32,24 @@
             </tr>
             End of Lab 14-->
             <!--Lab 16 Starts here-->
-            {% if context != '' %}
+            {% if context != '' and countuser > 0 %}
+
             <tr style="border: 1px solid">
                 <td style="border: 1px solid">{{ users }} </td>
                 <td style="border: 1px solid">{{ goalid }} {{ weeklygoal }}
                 </td>
-                <td style="border: 1px solid">{{ goalid }} {{ dailygoal }}
+
+                <td style="border: 1px solid">{{ dailyid }} {{ dailygoal }}
                 </td>
+                {% if verifygoal != '' %}
                 <td style="border: 1px solid"> {{ verifygoal }}
                 </td>
+                {% else %}
+                <td style="border: 1px solid">
+                </td>
+                {% endif %} {% if donegoal != '' %}
                 <td style="border: 1px solid"> {{ donegoal }}</td>
+                {% endif %}
             </tr>
             {% endif %}
             <!--{% for goals in dic_values %}-->

@@ -25,7 +25,7 @@ SECRET_KEY = '_l0s6(xbv0qzp!*r9cinni9-rcwnb53&o7ihv-03_j#dn&+m4k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.85.136.242']
+ALLOWED_HOSTS = ['100.25.111.222']
 
 
 # Application definition
@@ -122,3 +122,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/templates/semiuscrumy/home.html'

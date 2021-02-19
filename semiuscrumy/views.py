@@ -72,20 +72,24 @@ def home(request):
     # build array of goal id
     goal_id_array = []
 
+    """
     if usercount > 0:
         for gd in range(1, usercount):
             count = ScrumyGoals.objects.all()
-            ids = count[gd].goal_id
+            ids = count[1].goal_id
             goal_id_array.append(ids)
-
-        context = {
-            'goalid': ScrumyGoals.objects.all()[0].goal_id,
-            # all existing users in the model
-            'users': User.objects.all()[0].username,
-            'weeklygoal': weekly.goalstatus.all()[0].goal_name,
-            'dailygoal': daily.goalstatus.all()[0].goal_name,
-            'verifygoal': verify.goalstatus.all(),
-            'done': done.goalstatus.all()
-        }
-        return render(request, 'semiuscrumy/home.html', context)
+    """
+    context = {
+        'goalid': ScrumyGoals.objects.all()[0].goal_id,
+        # all existing users in the model
+        'countuser': usercount,
+        'users': User.objects.all()[0].username,
+        'weeklygoal': weekly.goalstatus.all()[0].goal_name,
+        'dailygoal': daily.goalstatus.all()[0].goal_name,
+        'dailyid': daily.goalstatus.all()[0],
+        'verifygoal': verify.goalstatus.all(),
+        'done': done.goalstatus.all()
+    }
+    return render(request, 'semiuscrumy/home.html', context)
+    # lab 16 stops here
     # return HttpResponse(response)

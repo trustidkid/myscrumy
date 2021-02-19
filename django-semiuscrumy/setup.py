@@ -5,7 +5,7 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
     README = readme.read()
 
 
-#allow setup.py to be run from any path
+# allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
@@ -14,17 +14,17 @@ setup(
     author='Semiu Biliaminur',
     author_email='yemi.bili07@gmail.com',
     description='A simple application',
-    license = 'BSD License',
+    license='BSD License',
     long_description=README,
     long_description_content_type='text/markdown',
     url='https://github.com/trustidkid/myscrumy',
     packages=find_packages(),
     include_package_data=True,
-    
+
     classifiers=[
         'Environment :: Web Environemnt',
         'Framework :: Django',
-        'Framework :: Django :: '
+        'Framework :: Django :: ',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.6.8',
         'License :: OSI Approved :: BSD License',
