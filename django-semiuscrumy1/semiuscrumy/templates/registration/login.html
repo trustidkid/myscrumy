@@ -172,7 +172,7 @@
         <hr>
         <p>{{ loginerror }}</p>
         {% endif %}
-        <form action="" method="POST">
+        <form action="{% url 'index' %}" method="POST">
             {% csrf_token %}
             
             <!--<hr>
