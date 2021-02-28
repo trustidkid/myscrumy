@@ -13,7 +13,16 @@
 
 <body>
     <div class="container">
+
+        <hr>
+        <b>Login User:- {{ loginuser }}</b>
+        <hr>
+        <a href="{% url 'semiuscrumy:addgoal' %}"><b> Add a New Goal</b></a>
+        <!-- Lab 18 starts here -->
+
+
         <table style="border: 1px solid">
+
 
             <tr style="border: 1px solid">
                 <th style="border: 1px solid">User</th>
@@ -22,7 +31,7 @@
                 <th style="border: 1px solid">Verify Goals</th>
                 <th style="border: 1px solid">Done Goals</th>
             </tr>
-            <!-- Lab 14 starts here
+            <!--  Lab 14 starts here
             <tr style="border: 1px solid">
                 <td style="border: 1px solid">{{ user }}</td>
                 <td style="border: 1px solid">{{goal_name}} | {{ goal_id }}</td>
@@ -31,28 +40,84 @@
                 <td style="border: 1px solid"></td>
             </tr>
             End of Lab 14-->
-            <!--Lab 16 Starts here-->
-            {% if context != '' and countuser > 0 %}
+            <!--Lab 16 Starts here -->
+            {% for user in users %}
+
             <tr style="border: 1px solid">
-                <td style="border: 1px solid">{{ users }} </td>
-                <td style="border: 1px solid">{{ goalid }} {{ weeklygoal }}
+
+                <td style="border: 1px solid">{{ user }}
                 </td>
 
-                <td style="border: 1px solid">{{ dailygoal }}
-                </td>
-                {% if verifygoal != '' %}
-                <td style="border: 1px solid"> {{ verifygoal }}
-                </td>
-                {% else %}
                 <td style="border: 1px solid">
+
+                    <table>
+                        {% for goal in user.scrumygoals_set.all %} {% if goal.goal_status.status_name == 'Weekly Goal' %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'semiuscrumy:movegoal' goal.goal_id %}">
+                                    <b>{{ goal.goal_id }}</b> <b>{{goal.goal_name}}</b>
+                                </a>
+                            </td>
+                        </tr>
+                        {%endif%}{%endfor%}
+                    </table>
+
+
                 </td>
-                {% endif %} {% if donegoal != '' %}
-                <td style="border: 1px solid"> {{ donegoal }}</td>
-                {% endif %}
+
+
+                <td style="border: 1px solid">
+                    <table>
+                        {% for goal in user.scrumygoals_set.all %} {% if goal.goal_status.status_name == 'Daily Goal' %}
+                        <a href="">
+                            <tr>
+
+                                <td>
+                                    <a href="{% url 'semiuscrumy:movegoal' goal.goal_id %}">
+                                        <b>{{ goal.goal_id }}</b> <b>{{goal.goal_name}}</b>
+                                    </a>
+                                </td>
+
+                            </tr>
+                        </a>
+                        {%endif%} {%endfor%}
+                    </table>
+
+                </td>
+
+                <td style="border: 1px solid">
+                    <table>
+                        {% for goal in user.scrumygoals_set.all %} {% if goal.goal_status.status_name == 'Verify Goal' %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'semiuscrumy:movegoal' goal.goal_id %}">
+                                    <b>{{ goal.goal_id }}</b> <b>{{goal.goal_name}}</b>
+                                </a>
+                            </td>
+                        </tr>
+                        {%endif%} {%endfor%}
+                    </table>
+
+                </td>
+
+                <td style="border: 1px solid">
+                    <table>
+                        {% for goal in user.scrumygoals_set.all %} {% if goal.goal_status.status_name == 'Done Goal' %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'semiuscrumy:movegoal' goal.goal_id %}">
+                                    <b>{{ goal.goal_id }}</b> <b>{{goal.goal_name}}</b>
+                                </a>
+                            </td>
+                        </tr>
+                        {%endif%} {%endfor%}
+                    </table>
+
+                </td>
+
             </tr>
-            {% endif %}
-            <!--{% for goals in dic_values %}-->
-            <!--{% endfor %}-->
+            {% endfor %}
+
         </table>
     </div>
     <table>

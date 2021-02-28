@@ -19,5 +19,6 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('semiuscrumy', include('semiuscrumy.urls'))
+    path('semiuscrumy', include('semiuscrumy.urls', namespace='semiuscrumy')),
+    path('websocket/', include('websocket.urls'))
 ]

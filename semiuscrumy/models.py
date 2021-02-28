@@ -21,7 +21,7 @@ class ScrumyGoals(models.Model):
     goal_status = models.ForeignKey(
         GoalStatus, on_delete=models.PROTECT, related_name='goalstatus')
     user = models.ForeignKey(
-        User, on_delete=models.PROTECT, related_name='scrumygoals')
+        User, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.goal_name

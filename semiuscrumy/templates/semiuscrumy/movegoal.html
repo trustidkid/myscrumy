@@ -17,15 +17,17 @@
         <!-- Lab 18 starts here -->
 
         <div class="main-block">
-            <h1>Create New User</h1>
+            <h1>Move Goal</h1>
 
             <form action="" method="POST">
                 {% csrf_token %} {{form}}
-
-                <button type="submit">Submit</button>
+                <input type="text" name="goal_name" value="{{goal_name}}" readonly />
+                <!--<input type="text" name="goal_status" value="" placeholder="Enter Goal Status" required />-->
+                <button type="submit">Move..</button>
                 <!-- Lab 18 ends here -->
             </form>
         </div>
+
     </div>
     <table>
 </body>
