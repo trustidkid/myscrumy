@@ -7,7 +7,7 @@ import json
 # Create your views here.
 @csrf_exempt #to ignore csrf token
 def test(request):
-    return JsonResponse({'message': 'hello Daud'}, status=200) 
+    return JsonResponse({"message": "hello Daud"}, status=200) 
 
 #create helper function to help pass request body binary object to dictionary
 def _parse_body(body):
@@ -18,17 +18,17 @@ def _parse_body(body):
 @csrf_exempt
 def connect(request):
     body = _parse_body(request.body)
-    connection_id = body['connectionId'] 
+    connection_id = body["connectionId"] 
     savecon = Connection(connection_id=connection_id)
     savecon.save()
-    JsonResponse({'message':'connect successfully'}, status=200)
+    JsonResponse({"message":"connect successfully"}, status=200)
 
 @csrf_exempt
 def disconnect(request):
     body = _parse_body(request.body)
-    connection_id = body['connectionId'] 
+    connection_id = body["connectionId"] 
     savecon = Connection(connection_id=connection_id)
     savecon.delete()
-    JsonResponse({'message':'disconnect successfully'}, status=200)
+    JsonResponse({"message":"disconnect successfully"}, status=200)
     
     
