@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from websocket.models import ChatMessage, Connection
 import json
 import boto3
+from . import views
 
 # Create your views here.
 @csrf_exempt #to ignore csrf token
@@ -14,7 +15,7 @@ def test(request):
 def _parse_body(body):
     #decoding to utf-8 make it easy to convert body object to json
     body_unicode = body.decode('utf-8')
-    return json.loads(json.dumps(body_unicode))
+    return json.loads(body_unicode)
 
 @csrf_exempt
 def connect(request):
@@ -32,10 +33,11 @@ def disconnect(request):
     deletecon.delete()
     return JsonResponse({'message':'disconnect successfully'}, status=200)
     
-#def _send_to_connection(connection_id, data):
-    #gatewayapi = boto3.client(‘apigatewaymanagementapi’, endpoint_url='https://uvy5wo0wg4.execute-api.us-east-1.amazonaws.com/testStage/@connections',region_name='us-east-2', aws_access_key_id = 'AKIAIWIKCOMA7AZMVQHQ', aws_secret_access_key = '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')
+def _send_to_connection(connection_id, data):
+    gatewayapi = boto3.client("apigatewaymanagementapi", endpoint_url="https://uvy5wo0wg4.execute-api.us-east-1.amazonaws.com/testStage/@connections",region_name="us-east-1", aws_access_key_id="AKIAXVQGCFMCVBFZ6TNH", aws_secret_access_key="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")
+    
     #Using boto3 to make post request to api gateway
-    #return gatewayapi.post_to_connection(ConnectionId=connection_id, data="json.dumps(data).encode('utf-8'")
+    return gatewayapi.post_to_connection(ConnectionId=connection_id, data=json.dumps(data).encode('utf-8'))
 
 #sending message
 
@@ -47,10 +49,16 @@ def send_message(request):
     timestamps = body['timestamp']
     message = body['message']
     save_to_db = ChatMessage(username=username, message = message, timestamp=timestamps)
+    save_to_db.save()        
     connections = Connection.objects.all()
     data = {'messages':[body]}
     for con in connections:
         _send_to_connection(con.id, data)
-    save_to_db.save()
+    
+
+def getRecentMessages(request):
+    recent_msg = ChatMessage.objects.all()
+    return JsonResponse({'messages': recent_msg})
+    
     
     
