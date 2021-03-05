@@ -15,7 +15,7 @@ def test(request):
 def _parse_body(body):
     #decoding to utf-8 make it easy to convert body object to json
     body_unicode = body.decode('utf-8')
-    return json.loads(body_unicode)
+    return json.loads(json.dumps(body_unicode)
 
 @csrf_exempt
 def connect(request):
