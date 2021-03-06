@@ -20,7 +20,7 @@ def _parse_body(body):
 @csrf_exempt
 def connect(request):
     body = _parse_body(request.body)
-    connection_id = body['connectionId'] 
+    connection_id = body["connectionId"] 
     savecon = Connection(connection_id=connection_id)
     savecon.save()
     return JsonResponse({'message':'connect successfully'}, status=200)
@@ -28,7 +28,7 @@ def connect(request):
 @csrf_exempt
 def disconnect(request):
     body = _parse_body(request.body)
-    connection_id = body['connectionId'] 
+    connection_id = body["connectionId"] 
     deletecon = Connection(connection_id=connection_id)
     deletecon.delete()
     return JsonResponse({'message':'disconnect successfully'}, status=200)
