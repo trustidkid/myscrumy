@@ -9,12 +9,12 @@ from . import views
 # Create your views here.
 @csrf_exempt #to ignore csrf token
 def test(request):
-    return JsonResponse({'message': 'hello Daud'}, status=200) 
+    return JsonResponse({"message": "hello Daud"}, status=200) 
 
 #create helper function to help pass request body binary object to dictionary
 def _parse_body(body):
     #decoding to utf-8 make it easy to convert body object to json
-    body_unicode = body.decode('utf-8')
+    body_unicode = body.decode("utf-8")
     return json.loads(body_unicode)
 
 @csrf_exempt
@@ -23,7 +23,7 @@ def connect(request):
     connection_id = body["connectionId"] 
     savecon = Connection(connection_id=connection_id)
     savecon.save()
-    return JsonResponse({'message':'connect successfully'}, status=200)
+    return JsonResponse({"message":"connect successfully"}, status=200)
 
 @csrf_exempt
 def disconnect(request):
@@ -31,7 +31,7 @@ def disconnect(request):
     connection_id = body["connectionId"] 
     deletecon = Connection(connection_id=connection_id)
     deletecon.delete()
-    return JsonResponse({'message':'disconnect successfully'}, status=200)
+    return JsonResponse({"message":"disconnect successfully"}, status=200)
     
 def _send_to_connection(connection_id, data):
     gatewayapi = boto3.client("apigatewaymanagementapi", endpoint_url="https://uvy5wo0wg4.execute-api.us-east-1.amazonaws.com/testStage/@connections",region_name="us-east-1", aws_access_key_id="AKIAXVQGCFMCVBFZ6TNH", aws_secret_access_key="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")
