@@ -14,8 +14,8 @@ def test(request):
 #create helper function to help pass request body binary object to dictionary
 def _parse_body(body):
     #decoding to utf-8 make it easy to convert body object to json
-    body_unicode = body.decode("utf-8")
-    return json.loads(body_unicode)
+    body_unicode = body.decode('utf-8')
+    return json.loads(str(body_unicode))
 
 @csrf_exempt
 def connect(request):
